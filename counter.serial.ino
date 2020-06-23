@@ -1,30 +1,24 @@
-/* Simple Counter
-* ——————
-*
-* This is a simple counter that takes a digital input
-*
-*/
-int ledPin = 13; // choose the pin for the LED
-int switchPin =2; // choose the input pin (for a pushbutton)
-int val = 0; // variable for reading the pin status
+int ledPin = 13; // ενσωματωμένο LED
+int switchPin =2; // είσοδος από έναν αισθητήρα
+int val = 0; // μεταβλητή που διαβάζει την είσοδο
 int counter = 0;
 int currentState = 0;
 int previousState = 0;
 
 void setup() {
-pinMode(ledPin, OUTPUT); // declare LED as output
-pinMode(switchPin, INPUT); // declare pushbutton as input
+pinMode(ledPin, OUTPUT); // δήλωση της LED ως έξοδος
+pinMode(switchPin, INPUT); // δήλωση του αισθητήρα ως είσοδος
 Serial.begin(9600);
 }
 
 void loop(){
-val = digitalRead(switchPin); // read input value
-if (val == HIGH) { // check if the input is HIGH (button released)
-digitalWrite(ledPin, HIGH); // turn LED on
+val = digitalRead(switchPin); // διαβάσει την είσοδο
+if (val == HIGH) { // έλεγχος για λογικό HIGH
+digitalWrite(ledPin, HIGH); // ανάβει το LED
 currentState = 1;
 }
 else {
-digitalWrite(ledPin, LOW); // turn LED off
+digitalWrite(ledPin, LOW); // σβήνει το LED
 currentState = 0;
 }
 if(currentState != previousState){
